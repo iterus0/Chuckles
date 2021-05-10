@@ -6,6 +6,10 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import xyz.iterus.chuckles.jokes.data.network.ICNDb
+import xyz.iterus.chuckles.jokes.data.network.api.ICNDbApi
+import xyz.iterus.chuckles.jokes.data.repo.JokesRepositoryImpl
+import xyz.iterus.chuckles.jokes.domain.interactor.JokesInteractor
+import xyz.iterus.chuckles.jokes.domain.repo.JokesRepository
 import xyz.iterus.chuckles.jokes.ui.JokesViewModel
 
 object JokesModule {
@@ -21,11 +25,19 @@ object JokesModule {
             .build()
     }
 
+    private fun provideICNDbApi(retrofit: Retrofit): ICNDbApi {
+        return retrofit.create(ICNDbApi::class.java)
+    }
+
 
     val module = module {
         single { provideJsonConverter() }
         single { provideRetrofit(get()) }
+        single { provideICNDbApi(get()) }
 
-        viewModel { JokesViewModel() }
+        single<JokesRepository> { JokesRepositoryImpl(get()) }
+        single { JokesInteractor(get()) }
+
+        viewModel { JokesViewModel(get()) }
     }
 }

@@ -18,4 +18,12 @@ class JokesFragment : Fragment(R.layout.fragment_jokes) {
         binding = FragmentJokesBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        model.jokes.observe(viewLifecycleOwner, { binding.jokes.text = it.toString() })
+
+        model.reloadJokes(5)
+    }
 }

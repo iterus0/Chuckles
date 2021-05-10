@@ -9,6 +9,7 @@
     tools:context=".jokes.ui.JokesFragment">
 
     <TextView
+        android:id="@+id/jokes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
