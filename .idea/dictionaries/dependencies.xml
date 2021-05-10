@@ -1,0 +1,18 @@
+<component name="ProjectDictionaryState">
+  <dictionary name="dependencies">
+    <words>
+      <w>codegen</w>
+      <w>constraintlayout</w>
+      <w>kapt</w>
+      <w>koin</w>
+      <w>kotlinx</w>
+      <w>leakcanary</w>
+      <w>livedata</w>
+      <w>mockk</w>
+      <w>moshi</w>
+      <w>mvvm</w>
+      <w>retrofit</w>
+      <w>viewmodel</w>
+    </words>
+  </dictionary>
+</component>
