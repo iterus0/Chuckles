@@ -8,15 +8,53 @@
     android:layout_height="match_parent"
     tools:context=".jokes.ui.JokesFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jokes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        tools:listitem="@layout/list_item_joke" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="80dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/jokesCountTextField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/reloadButton"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Jokes on you, I'm into that"
-    />
+        android:hint="@string/count"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/jokesCount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/reloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
+        app:layout_constraintStart_toEndOf="@id/jokesCountTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/jokesCountTextField"
+        app:layout_constraintBottom_toBottomOf="@id/jokesCountTextField"
+        android:text="@string/reload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

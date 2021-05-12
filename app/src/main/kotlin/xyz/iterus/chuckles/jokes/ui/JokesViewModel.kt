@@ -14,13 +14,21 @@ class JokesViewModel(private val interactor: JokesInteractor) : ViewModel() {
     private val _jokes: MutableLiveData<List<Joke>> = MutableLiveData()
     val jokes: LiveData<List<Joke>> = _jokes
 
-
-    fun reloadJokes(count: Int) {
-        viewModelScope.launch {
+    fun reloadJokes(count: String) {
+        if (count.isEmpty()) {
+            // TODO: Show errors to the user
+        } else {
             try {
-                _jokes.value = interactor.getRandomJokes(count)
-            } catch (e: IllegalArgumentException) {
-                // TODO: show error message
+                val n = count.toInt()
+                viewModelScope.launch {
+                    _jokes.value = interactor.getRandomJokes(n)
+                }
+            } catch (e: Exception) {
+                when (e) {
+                    is IllegalArgumentException -> Unit
+                    is NumberFormatException -> Unit
+                    else -> throw e
+                }
             }
         }
     }
