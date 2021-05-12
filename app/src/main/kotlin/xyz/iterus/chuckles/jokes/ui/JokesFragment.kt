@@ -62,6 +62,7 @@ class JokesFragment : Fragment(R.layout.fragment_jokes) {
 
     private fun showInputError(error: JokesViewModel.JokesError) {
         binding.jokesCount.error = when (error) {
+            is JokesViewModel.JokesError.None -> null
             is JokesViewModel.JokesError.EmptyJokesCount -> getString(R.string.error_input_empty)
             is JokesViewModel.JokesError.InvalidJokesCount -> getString(R.string.error_input_invalid)
             else -> getString(R.string.error_unknown)

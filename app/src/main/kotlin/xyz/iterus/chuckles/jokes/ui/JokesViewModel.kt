@@ -21,6 +21,7 @@ class JokesViewModel(private val interactor: JokesInteractor) : ViewModel() {
         if (count.isEmpty()) {
             _jokesError.value = JokesError.EmptyJokesCount
         } else {
+            _jokesError.value = JokesError.None
             _loading.value = true
 
             try {
@@ -45,5 +46,6 @@ class JokesViewModel(private val interactor: JokesInteractor) : ViewModel() {
     sealed class JokesError {
         object EmptyJokesCount : JokesError()
         object InvalidJokesCount : JokesError()
+        object None : JokesError()
     }
 }
