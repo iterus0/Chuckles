@@ -5,4 +5,8 @@
 
     <string name="reload">Reload</string>
     <string name="count">Count</string>
+
+    <string name="error_input_empty">Please enter jokes count</string>
+    <string name="error_input_invalid">Please enter valid jokes count</string>
+    <string name="error_unknown">Something went wrong</string>
 </resources>

@@ -26,21 +26,45 @@ class JokesFragment : Fragment(R.layout.fragment_jokes) {
 
         // TODO: Koin inject
         jokesAdapter = JokesAdapter(requireContext())
-
-        with (binding) {
-            jokes.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = jokesAdapter
-            }
-
-            reloadButton.setOnClickListener {
-                val count = binding.jokesCount.text.toString()
-                model.reloadJokes(count)
-            }
+        binding.jokes.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = jokesAdapter
         }
 
-        model.jokes.observe(viewLifecycleOwner, {
-            jokesAdapter.submitList(it)
-        })
+        subscribeObservers()
+    }
+
+    private fun subscribeObservers() {
+        with (model) {
+            jokes.observe(viewLifecycleOwner, {
+                jokesAdapter.submitList(it)
+            })
+
+            loading.observe(viewLifecycleOwner, {
+                showProgressBar(it)
+            })
+
+            jokesError.observe(viewLifecycleOwner, {
+                showInputError(it)
+            })
+        }
+
+        binding.reloadButton.setOnClickListener {
+            val count = binding.jokesCount.text.toString()
+            model.reloadJokes(count)
+        }
+    }
+
+    private fun showProgressBar(isDisplayed: Boolean) {
+        val visibility = if (isDisplayed) View.VISIBLE else View.GONE
+        binding.loading.visibility = visibility
+    }
+
+    private fun showInputError(error: JokesViewModel.JokesError) {
+        binding.jokesCount.error = when (error) {
+            is JokesViewModel.JokesError.EmptyJokesCount -> getString(R.string.error_input_empty)
+            is JokesViewModel.JokesError.InvalidJokesCount -> getString(R.string.error_input_invalid)
+            else -> getString(R.string.error_unknown)
+        }
     }
 }
