@@ -79,7 +79,10 @@ dependencies {
 
     // Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.10.6")
+    testImplementation("io.mockk:mockk:1.11.0")
+    testImplementation("io.insert-koin:koin-test:3.0.1")
+    testImplementation("io.insert-koin:koin-test-junit4:3.0.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
