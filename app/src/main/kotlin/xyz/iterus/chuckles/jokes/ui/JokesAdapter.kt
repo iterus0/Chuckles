@@ -1,6 +1,5 @@
 package xyz.iterus.chuckles.jokes.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,10 +8,8 @@ import xyz.iterus.chuckles.databinding.ListItemJokeBinding
 import xyz.iterus.chuckles.jokes.domain.model.Joke
 
 class JokesAdapter(
-    private val context: Context
+    private var items: List<Joke>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var items: List<Joke> = ArrayList()
 
     fun submitList(jokes: List<Joke>) {
         val diff = DiffUtil.calculateDiff(
@@ -24,7 +21,7 @@ class JokesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(context)
+        val inflater = LayoutInflater.from(parent.context)
         val binding = ListItemJokeBinding.inflate(inflater, parent, false)
 
         return JokeViewHolder(binding)

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import xyz.iterus.chuckles.R
 import xyz.iterus.chuckles.databinding.FragmentJokesBinding
@@ -14,7 +15,7 @@ class JokesFragment : Fragment(R.layout.fragment_jokes) {
 
     private lateinit var binding: FragmentJokesBinding
     private val model: JokesViewModel by viewModel()
-    private lateinit var jokesAdapter: JokesAdapter
+    private val jokesAdapter: JokesAdapter by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentJokesBinding.inflate(inflater, container, false)
@@ -24,8 +25,6 @@ class JokesFragment : Fragment(R.layout.fragment_jokes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO: Koin inject
-        jokesAdapter = JokesAdapter(requireContext())
         binding.jokes.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = jokesAdapter
