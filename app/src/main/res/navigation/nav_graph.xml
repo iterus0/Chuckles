@@ -15,4 +15,11 @@
         tools:layout="@layout/fragment_jokes"
     />
 
+    <fragment
+        android:id="@+id/api_fragment"
+        android:name="xyz.iterus.chuckles.api.ui.ApiFragment"
+        android:label="@string/menu_api"
+        tools:layout="@layout/fragment_api"
+    />
+
 </navigation>
