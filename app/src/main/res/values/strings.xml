@@ -3,6 +3,9 @@
 <resources>
     <string name="app_name">Chuckles</string>
 
+    <string name="menu_jokes">Jokes</string>
+    <string name="menu_api">API Info</string>
+
     <string name="reload">Reload</string>
     <string name="count">Count</string>
 

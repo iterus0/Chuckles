@@ -7,6 +7,8 @@ import xyz.iterus.chuckles.jokes.domain.repo.JokesRepository
 
 class JokesRepositoryImpl(private val api: ICNDbApi) : JokesRepository {
 
+    // TODO: Implement joke caching
+
     override suspend fun getRandomJokes(numOfJokes: Int) = withContext(Dispatchers.IO) {
         val response = api.getRandomJokes(numOfJokes)
 

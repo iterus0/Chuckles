@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/jokes_fragment"
+        android:icon="@drawable/ic_buffoon"
+        android:title="@string/menu_jokes" />
+
+    <item
+        android:id="@+id/api_fragment"
+        android:icon="@drawable/ic_api"
+        android:title="@string/menu_api" />
+
+</menu>
