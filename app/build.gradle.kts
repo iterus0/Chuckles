@@ -53,7 +53,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.0")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
     // DI
     implementation("io.insert-koin:koin-android:3.0.1")
     // MVVM
@@ -82,7 +82,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.11.0")
     testImplementation("io.insert-koin:koin-test:3.0.1")
     testImplementation("io.insert-koin:koin-test-junit4:3.0.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
